@@ -1,0 +1,27 @@
+###
+GET https://localhost:8000/ HTTP/1.1
+content-type: application/json
+
+
+###
+POST https://localhost:8000/v1/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "panda",
+    "email": "debajyoto99@gmail.com",
+    "password": "12345"
+}
+
+
+###
+POST https://localhost:8000/v1/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "sasd@efe.com",
+    "password": "12345"
+}
+
+
+
