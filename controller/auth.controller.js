@@ -1,23 +1,18 @@
+const catchAsync=require('../utils/catchAsyncError')
+const {addUser,LoginUser}=require("../services/user.service")
 
-const registerController = async (req, res) => {
-    try{
-        res.status(200).send({ success: 1 });
-    }
-    catch(err){
-        res.status(400).send({ success: 0 });
-    }
-    
-};
 
-const loginController = async (req, res) => {
-    try{
-        res.status(200).send({ success: 1 , message: 'login success' });
-    }
-    catch(err){
-        res.status(400).send({ success: 0 });
-    }
+const registerController= catchAsync( async (req, res) => {
+    const user=await addUser(req.body)
+    res.status(200).send({ success: 1 , user : user});
+})
+
+
+const loginController =catchAsync(async (req, res) => {
+    const userLogin=await LoginUser(req.body)
+    res.status(200).send({success:1,user:userLogin})
     
-};
+}) 
 
 module.exports = {
     registerController,

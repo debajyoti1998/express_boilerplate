@@ -5,6 +5,7 @@ const express=require("express");
 const cors = require('cors')
 const cookieParser = require('cookie-parser');  
 const mongoose=require('mongoose');
+const {NotFound}=require("./utils/error")
 
 /**
   * middleware
@@ -41,7 +42,11 @@ app.get('/', async function(req,res){
 });
 app.use('/v1',require('./routes/v1'))
 
-app.use(require('./middlewares/handleErrors'))
+app.use((req, res, next) => {
+  next(new NotFound('URL or method not found'));
+});
+
+app.use(require('./middlewares/handleErrors'));
 
 /**
   * running server with HTTPS

@@ -1,13 +1,8 @@
+const catchAsync=require('../utils/catchAsyncError')
 
-const allProduct = async (req, res) => {
-    try{
-        res.status(200).send({ success: 1 });
-    }
-    catch(err){
-        res.status(400).send({ success: 0 });
-    }
-    
-};
+const allProduct = catchAsync(async (req, res) => {
+    res.status(200).send({ success: 1 });
+})
 
 module.exports = {
     allProduct,

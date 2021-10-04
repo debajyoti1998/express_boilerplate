@@ -6,7 +6,7 @@ class GeneralError extends Error {
   
     getCode() {
       if (this instanceof BadRequest) {
-        return 400;
+        return Error400;
       } if (this instanceof NotFound) {
         return 404;
       }
@@ -15,11 +15,13 @@ class GeneralError extends Error {
 }
 
 class ValidationError extends GeneralError { }
+class DbError extends GeneralError { }
 class BadRequest extends GeneralError { }
 class NotFound extends GeneralError { }
   
 module.exports = {
     GeneralError,
+    DbError,
     ValidationError,
     BadRequest,
     NotFound
